@@ -1,0 +1,29 @@
+{
+  "name": "sc_demo001",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@types/three": "^0.175.0",
+    "ammo.js": "github:kripken/ammo.js",
+    "cannon-es": "^0.20.0",
+    "dat.gui": "^0.7.9",
+    "element-plus": "^2.9.7",
+    "mitt": "^3.0.1",
+    "simplex-noise": "^4.0.3",
+    "stats.js": "^0.17.0",
+    "three": "^0.175.0",
+    "three-csg-ts": "^3.2.0",
+    "vue": "^3.4.15"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "vite": "^5.1.4"
+  }
+}
