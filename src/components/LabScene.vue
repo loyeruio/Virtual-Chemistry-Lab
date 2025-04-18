@@ -41,7 +41,6 @@ import {
   getCannonWorld,
   createFlaskBalls
 } from '../utils/threeHelper';
-import { initInternalSimulation } from '../utils/Internalsimulation';
 import LoadingIndicator from './LoadingIndicator.vue';
 import * as THREE from 'three';
 import { throttle } from 'lodash';
@@ -67,7 +66,6 @@ const loadedModels = ref([]);
 const bubbleEffects = ref([]);
 let sceneObjects = null;
 const modelReferences = ref({});
-const internalSimulations = ref([]);
 const flameEffects = ref([]);
 const flaskBalls = ref(null);
 // 新增：氯气填充相关状态
@@ -1175,9 +1173,6 @@ onBeforeUnmount(() => {
   if (sceneObjects) {
     sceneObjects.dispose();
   }
-  internalSimulations.value.forEach((sim) => {
-    if (sim.dispose) sim.dispose();
-  });
   if (pipeFlowEffect) {
     pipeFlowEffect.stop();
   }
@@ -1249,7 +1244,7 @@ const resetChlorineFill = () => {
 
 // 暴露方法给父组件或通过 inject/provide 使用
 defineExpose({
-  modelReferences, internalSimulations,
+  modelReferences,
   startChlorineFill,
   stopChlorineFill, // 现在这个函数已定义
   resetChlorineFill, // 现在这个函数已定义
