@@ -895,7 +895,7 @@ const updateCharacterMovement = () => {
 // 修改loadModels函数，添加动画加载
 const loadModels = async () => {
   try {
-    const modelPaths = ['/models/lab.glb'];
+    const modelPaths = ['https://raw.githubusercontent.com/loyeruio/Virtual-Chemistry-Lab/refs/heads/master/public/models/lab.glb'];
 
     for (let i = 0; i < modelPaths.length; i++) {
       const path = modelPaths[i];
