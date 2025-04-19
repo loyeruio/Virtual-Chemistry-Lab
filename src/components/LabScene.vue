@@ -895,7 +895,7 @@ const updateCharacterMovement = () => {
 // 修改loadModels函数，添加动画加载
 const loadModels = async () => {
   try {
-    const modelPaths = ['https://pub-5a603d6e368e4c91b27ddc63b98d984f.r2.dev/lab.glb'];
+    const modelPaths = ['https://virtual-chemistry-lab-proxy.3061414827hyy.workers.dev/proxy/lab.glb'];
 
     for (let i = 0; i < modelPaths.length; i++) {
       const path = modelPaths[i];
