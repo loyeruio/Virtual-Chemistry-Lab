@@ -4,7 +4,7 @@
 export default class AIService {
   constructor() {
     // 从环境变量读取 API URL，提供一个本地默认值
-    this.apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001/api/ai';
+    this.apiUrl = 'http://123.57.209.252:8080/api/ai';
     this.isConnected = false;
     this.pendingRequests = [];
     this.connectionCheckInterval = null;
