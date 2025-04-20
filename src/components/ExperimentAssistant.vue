@@ -655,7 +655,6 @@ onBeforeUnmount(() => {
   height: 8px;
   width: 100%;
   background: linear-gradient(to right, #4A90E2, #3a7bc8);
-  pointer-events: auto;
 }
 
 .content-container {
@@ -668,16 +667,18 @@ onBeforeUnmount(() => {
 }
 
 .left-panel {
-  width: 25%;
-  padding: 16px;
+  width: 300px; /* 固定宽度，适中且适合内容展示 */
+  min-width: 250px; /* 最小宽度，防止过窄 */
+  max-width: 400px; /* 最大宽度，防止过宽 */
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
-  background: linear-gradient(135deg, #f5f7fa 0%, #e6f0fa 100%);
-  overflow-y: hidden;
+  background: linear-gradient(135deg, #f8fafc 0%, #e9f1fa 100%); /* 更柔和的渐变 */
+  overflow-y: auto; /* 允许垂直滚动 */
   position: relative;
   transition: all 0.3s ease;
+  border-right: 1px solid rgba(0, 0, 0, 0.08); /* 更浅的边框 */
 }
 
 .right-panel {
@@ -689,51 +690,49 @@ onBeforeUnmount(() => {
 }
 
 .tip-box {
-  margin: 0;
-  padding: 16px;
-  background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
-  border-left: 4px solid #ffc107;
-  border-radius: 8px;
+  padding: 12px 16px;
+  background: #fffde7; /* 更柔和的背景色 */
+  border-left: 4px solid #ffca28; /* 更现代的黄色 */
+  border-radius: 6px;
   font-size: 14px;
-  line-height: 1.5;
-  color: #5d4037;
+  line-height: 1.6;
+  color: #4a3c31;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
 }
 
 .tip-box:hover {
-  transform: translateX(4px);
+  transform: translateX(2px);
 }
 
 .tip-box::before {
   content: "💡";
-  margin-right: 12px;
-  font-size: 18px;
+  margin-right: 8px;
+  font-size: 16px;
 }
 
 .action-buttons {
   display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: auto;
-  padding: 16px 0;
+  gap: 12px;
+  padding: 12px 0;
+  flex-shrink: 0; /* 防止按钮被压缩 */
 }
 
 .action-buttons .el-button {
   flex: 1;
-  height: 48px;
-  font-size: 16px;
+  height: 44px;
+  font-size: 15px;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .action-buttons .el-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .action-buttons .el-button:active {
@@ -742,17 +741,17 @@ onBeforeUnmount(() => {
 
 /* 滚动条样式 */
 .left-panel::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .left-panel::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
 }
 
 .left-panel::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, #4A90E2, #3a7bc8);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .left-panel::-webkit-scrollbar-thumb:hover {
@@ -764,19 +763,20 @@ onBeforeUnmount(() => {
   .content-container {
     flex-direction: column;
   }
-  
-  .left-panel, .right-panel {
-    width: 100%;
-  }
-  
+
   .left-panel {
-    height: 40%;
+    width: 100%;
+    max-width: none; /* 移除最大宽度限制 */
+    height: auto; /* 高度自适应内容 */
+    min-height: 300px; /* 最小高度，确保内容可见 */
     border-right: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
-  
+
   .right-panel {
-    height: 60%;
+    width: 100%;
+    height: auto;
+    flex: 1;
   }
 }
 
@@ -791,19 +791,19 @@ onBeforeUnmount(() => {
 }
 
 :deep(.assistant-wrapper.collapsed) .left-panel {
-  width: 100% !important; /* 确保收起状态下宽度为100% */
-  flex: 1;
-  padding: 12px;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  padding: 16px;
   gap: 12px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   border-right: none;
+  overflow-y: auto;
 }
 
 :deep(.assistant-wrapper.collapsed) .right-panel {
   display: none;
-  width: 0;
-  flex: 0;
 }
 
 :deep(.assistant-wrapper.collapsed) .tip-box {
@@ -811,15 +811,11 @@ onBeforeUnmount(() => {
 }
 
 :deep(.assistant-wrapper.collapsed) .action-buttons {
-  margin-top: auto;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 
-:deep(.assistant-wrapper.collapsed) .experiment-data {
-  margin-bottom: 12px;
-}
-
+:deep(.assistant-wrapper.collapsed) .experiment-data,
 :deep(.assistant-wrapper.collapsed) .experiment-steps {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 </style>
