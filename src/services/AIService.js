@@ -4,7 +4,7 @@
 export default class AIService {
   constructor() {
     // 从环境变量读取 API URL，提供一个本地默认值
-    this.apiUrl = 'https://virtual-chemistry-lab-proxy.3061414827hyy.workers.dev/api/ai';
+    this.apiUrl = 'http://www.tunnelsjmana.xin:8888/qqJTTtdK';
     this.isConnected = false;
     this.pendingRequests = [];
     this.connectionCheckInterval = null;
